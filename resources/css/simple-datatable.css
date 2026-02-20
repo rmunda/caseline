@@ -1,0 +1,77 @@
+/* Simple datatable css */
+/* Add a gray border around the entire table */
+/* Outer container */
+
+.datatable-container {
+    @apply border border-gray-300 rounded overflow-hidden;
+}
+
+.datatable-table thead th {
+    @apply px-3 py-2 bg-blue-700 text-white border-none; /* Use @apply for Tailwind styles */
+    font-weight: 700; /* Or standard CSS */
+}
+
+.datatable-table tbody td {
+    @apply px-4 py-3 border-b border-gray-200;
+}
+
+/* Top controls container */
+.datatable-top {
+    @apply flex items-center justify-between flex-wrap gap-4 mb-4;
+}
+
+.datatable-search input {
+    @apply border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500;
+}
+
+/* Entries per page styling */
+.datatable-dropdown select {
+    @apply text-sm border border-gray-300 !rounded;
+}
+
+.datatable-dropdown label {
+    @apply text-gray-500;
+}
+
+/* Bottom controls container */
+
+/* 1. Outer Pagination Container */
+.datatable-pagination {
+    @apply inline-flex justify-center mt-4;
+}
+
+.datatable-pagination-list {
+    @apply !border !border-gray-300 !rounded overflow-hidden flex p-0 list-none !m-0;
+}
+
+/* 2. Vertical Separators */
+.datatable-pagination-list li:not(:first-child) {
+    @apply !border-l !border-gray-300;
+}
+
+/* 3. Base Button Style (Targeting the buttons in your screenshot) */
+.datatable-pagination-list li button {
+    @apply px-4 py-2 block transition-colors cursor-pointer text-gray-700 bg-white !border-none;
+}
+
+/* 4. ACTIVE STATE (Targeting .datatable-active as seen in your inspect tool) */
+.datatable-pagination-list li.datatable-active button {
+    @apply !bg-blue-600 !text-white !font-bold;
+}
+
+/* 5. HOVER STATE */
+.datatable-pagination-list li button:hover:not(.datatable-active button) {
+    @apply !bg-blue-50 !text-blue-600;
+}
+
+/* 6. DISABLED STATE (For arrows at the ends) */
+.datatable-pagination-list li.datatable-disabled button {
+    @apply !text-gray-300 cursor-not-allowed;
+}
+
+/* Footer text */
+.datatable-bottom {
+    @apply flex items-center justify-between mt-1 text-base text-gray-600;
+}
+
+

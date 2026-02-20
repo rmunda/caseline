@@ -1,0 +1,59 @@
+The most common "Utility" commands you'll use:
+Category,Command,What it creates
+Logic,    make:controller,  "Where you write your ""Advocate vs Admin"" logic."
+Data,     make:model,        The PHP class that talks to your database.
+Database, make:migration,   "The ""To-Do list"" for changing your tables."
+Security, make:middleware,  "The ""Security Guard"" for your routes."
+Testing,  make:test,         A script to automatically check if your login works.
+
+Best Practice (Production Level)
+
+Instead of:
+
+User::create($request->all());
+
+Use:
+
+User::create($request->validated());
+
+When using a Form Request:
+
+php artisan make:request StoreUserRequest
+
+Then inside:
+
+public function rules()
+{
+    return [
+        'name' => 'required',
+        'email' => 'required|email',
+        'password' => 'required',
+    ];
+}
+
+Now only validated fields are returned.
+
+🎯 Clean Professional Approach
+$data = $request->only(['name', 'email', 'password']);
+
+$data['password'] = bcrypt($data['password']);
+
+User::create($data);
+
+This gives:
+
+Validation
+
+Explicit control
+
+Protection
+
+Clean code
+
+💡 Senior-Level Understanding
+
+$request->all() trusts the client.
+
+Explicit array trusts the server.
+
+Always trust your server.

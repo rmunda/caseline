@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 // Added
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,7 +24,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Added [limits the number of char for DB field if nothing is mentioned
-        //otherwise if index applied 255*4>1000 bytes limit]
+        // otherwise if index applied 255*4>1000 bytes limit]
          Schema::defaultStringLength(191);
+
+         // Added for pagination
+         Paginator::useTailwind();
     }
 }
