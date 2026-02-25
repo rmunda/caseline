@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 // Added imports
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CaseController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,8 +24,14 @@ Route::middleware('auth')->group(function () {
 
 // 1. Routes for EVERYONE who is logged in (Normal Advocates)
 Route::middleware('auth')->group(function () {
-    Route::get('/cases', [CaseController::class, 'index'])->name('cases.index');
-    Route::get('/cases/{id}', [CaseController::class, 'show'])->name('cases.show');
+    // Manual way
+    // Route::get('/cases', [CaseController::class, 'index'])->name('cases.index');
+    // Route::get('/cases/{id}', [CaseController::class, 'show'])->name('cases.show');
+
+    // Generates the 6 instead of 7 routes
+    Route::resource('clients', ClientController::class)->except(['destroy']);
+
+    Route::resource('cases', CaseController::class)->except(['destroy']);
 });
 
 // 2. Routes ONLY for Admins (Group Admins)
@@ -38,7 +46,8 @@ Route::middleware(['auth', 'admin'])
     // the URLs will be /admin/users, /admin/users/create, etc.
     Route::resource('users', UserController::class);
 
-    // Only admins can delete a case
+    // Only admins can delete
+    Route::delete('/clients/{id}', [CaseController::class, 'destroy'])->name('clients.destroy');
     Route::delete('/cases/{id}', [CaseController::class, 'destroy'])->name('cases.destroy');
 });
 

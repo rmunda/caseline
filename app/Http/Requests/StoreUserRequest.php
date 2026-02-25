@@ -22,7 +22,7 @@ class StoreUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-             'name'     => 'required|string|max:255',
+             'name'     => 'required|regex:/^[a-zA-Z\s]+$/|max:100',
              'email'    => 'required|email|unique:users,email',
              'password' => 'required|string|min:8|confirmed',
              'role'     => 'required|string',
@@ -34,6 +34,10 @@ class StoreUserRequest extends FormRequest
     public function messages(): array
     {
         return [
+            'name.required'     => 'Please enter the Name.',
+            'name.string'       => 'Name must contain only valid characters.',
+            'name.max'          => 'Name cannot exceed 50 characters.',
+
             'name.required'     => 'Please enter a name.',
             'email.unique'      => 'That email is already taken.',
             'password.min'      => 'Password must be at least 8 characters.',

@@ -18,9 +18,17 @@
                     </x-nav-link>
                     @if(auth()->user()->role === UserRole::Admin)
                             <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')">
-                                {{ __('Manage Users') }}
+                                {{ __('Users') }}
                             </x-nav-link>
                     @endif
+
+                    <x-nav-link :href="route('clients.index')" :active="request()->routeIs('clients.*')">
+                        {{ __('Clients') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('cases.index')" :active="request()->routeIs('cases.*')">
+                        {{ __('Cases') }}
+                    </x-nav-link>
                 </div>
             </div>
 

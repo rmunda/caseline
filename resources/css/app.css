@@ -1,9 +1,18 @@
+/* ================= IMPORTS FIRST ================= */
+@import "./yajra-datatable.css";
+
+/* ================= TAILWIND ================= */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @plugin "flowbite/plugin";
 @source "../../node_modules/flowbite";
+
+
+/* ================= CUSTOM STYLES ================= */
+
 
 nav a, .navbar a {
     text-decoration: none;

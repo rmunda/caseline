@@ -7,7 +7,7 @@
 }
 
 .datatable-table thead th {
-    @apply px-3 py-2 bg-blue-700 text-white border-none; /* Use @apply for Tailwind styles */
+    @apply px-3 py-2 bg-blue-900 text-white border-none; /* Use @apply for Tailwind styles */
     font-weight: 700; /* Or standard CSS */
 }
 
@@ -21,7 +21,7 @@
 }
 
 .datatable-search input {
-    @apply border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500;
+    @apply border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-900;
 }
 
 /* Entries per page styling */
@@ -56,12 +56,12 @@
 
 /* 4. ACTIVE STATE (Targeting .datatable-active as seen in your inspect tool) */
 .datatable-pagination-list li.datatable-active button {
-    @apply !bg-blue-600 !text-white !font-bold;
+    @apply !bg-blue-900 !text-white !font-bold;
 }
 
 /* 5. HOVER STATE */
 .datatable-pagination-list li button:hover:not(.datatable-active button) {
-    @apply !bg-blue-50 !text-blue-600;
+    @apply !bg-blue-50 !text-blue-900;
 }
 
 /* 6. DISABLED STATE (For arrows at the ends) */

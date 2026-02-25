@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use App\Enums\UserRole;
+
 return new class extends Migration
 {
     /**
@@ -13,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             // Adding the role after the email column for a clean database view
-            $table->enum('role',['admin', 'advocate', 'lawyer', 'associate'])->default('advocate')->after('email');
+            $table->enum('role',array_column(UserRole::case(), 'value'))->default('advocate')->after('email');
         });
     }
 

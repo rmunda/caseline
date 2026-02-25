@@ -1,15 +1,16 @@
 @use(App\Enums\UserRole)
 <x-app-layout>
+    <x-slot name="header">
+        <div class="flex justify-between items-center">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ __('Edit User') }}</h2>
+             <a href="{{ route('admin.users.index') }}" class="bg-gray-500 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded">
+                                        Back
+             </a>
+        </div>
+    </x-slot>
+
     <div class="flex justify-center mt-8">
         <div class="w-full max-w-xl">
-
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-semibold">Edit User</h2>
-                <a href="{{ route('admin.users.index') }}" class="bg-gray-500 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded">
-                    Back
-                </a>
-            </div>
-
             @if ($errors->any())
                 <div class="bg-red-100 text-red-700 p-3 rounded mb-4">
                     <ul>
@@ -20,7 +21,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.users.update', $user->id) }}" method="POST" class="bg-white p-6 rounded">
+            <form action="{{ route('admin.users.update', $user->id) }}" method="POST" class="bg-white p-6 rounded shadow">
                 @csrf
                 @method('PUT')
 

@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
             perPage: 5,
             perPageSelect: [5, 10, 25, 50, 100],
         });
+        
+        table.style.display = ""; // show after init
     }
 
-    table.style.display = ""; // show after init
 });
