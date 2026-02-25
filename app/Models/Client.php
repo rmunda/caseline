@@ -38,6 +38,7 @@ class Client extends Model
     {
         return [
             'gender' => Gender::class, //
+            'dob' => 'date',
             'created_at' => 'datetime', //
         ];
     }

@@ -4,7 +4,8 @@
 <form action="{{ route('admin.clients.destroy', $id) }}" method="POST" style="display:inline">
     @csrf
     @method('DELETE')
-    <button type="submit" class="text-red-500 hover:text-red-700">
+    <button type="submit" class="text-red-500 hover:text-red-700"
+     onclick="return confirm('Are you sure you want to delete this client?')">
         <i class="bi bi-trash"></i>
     </button>
 </form>

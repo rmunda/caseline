@@ -47,7 +47,7 @@ Route::middleware(['auth', 'admin'])
     Route::resource('users', UserController::class);
 
     // Only admins can delete
-    Route::delete('/clients/{id}', [CaseController::class, 'destroy'])->name('clients.destroy');
+    Route::delete('/clients/{id}', [ClientController::class, 'destroy'])->name('clients.destroy');
     Route::delete('/cases/{id}', [CaseController::class, 'destroy'])->name('cases.destroy');
 });
 

@@ -42,7 +42,8 @@ class ClientController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // Read-Only
+        return redirect()->route('clients.edit', $id);
     }
 
     /**
@@ -50,15 +51,23 @@ class ClientController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        return view('clients.edit', compact('client'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreClientRequest $request, string $id)
     {
-        //
+        $client = Client::findOrFail($id);
+
+        $data = $request->validated();
+
+        $client->update($data);
+
+        return redirect()->route('clients.index')
+                             ->with('success', 'Client updated successfully.');
     }
 
     /**
@@ -66,6 +75,10 @@ class ClientController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        $client->delete();
+
+        return redirect()->route('clients.index')
+                              ->with('success', 'client deleted successfully.');
     }
 }
